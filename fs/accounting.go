@@ -283,8 +283,8 @@ type Account struct {
 func NewAccountSizeName(in io.ReadCloser, size int64, name string) *Account {
 	// On big files add a buffer
 	if size > 10<<20 {
-		const memUsed = 16 * 1024 * 1024
-		const bufSize = 128 * 1024
+		const memUsed = 32 * 1024 * 1024
+		const bufSize = 64 * 1024
 		const buffers = memUsed / bufSize
 		newIn, err := newAsyncReader(in, buffers, bufSize)
 		if err != nil {
